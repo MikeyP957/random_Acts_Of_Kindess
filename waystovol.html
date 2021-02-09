@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Volunteer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="jumbotron">
+        <header class="jumbotron">
+            <h3 class="display-3 text-center font-weight-bold">Volunteer Seattle</h3>
+            <h2 class="display text-center"> Connecting community members to volunteer opportunities and charitable organizations.</h2>
+            <h4 class="text-center">"There's nothing <em>stronger</em> than the <span>&#9829</span> of a volunteer!"</p>
+        </header>
+    <!--Nav bar with image brand-->
+    <main class="navbar navbar-expand-lg navbar-light bg-success">
+        <a class="navbar-brand" href="#"><img src="images/vol 4.png" width="30" height="30" alt="" loading="lazy"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <nav class="navbar-nav ml-auto">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="waystovol.html">Ways to Volunteer</a>
+                <a class="nav-link" href="#">News</a>
+                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="#">About Us</a>
+
+            </nav>
+        </div>
+    </main>
+
+    <form class="container">
+        <div class="form-group">
+          <label for="FormControlcity">Your Zip Code</label>
+          <input type="text" class="form-control"  placeholder="Zip Code">
+        </div>
+        <div class="form-group">
+          <label for="FormControArea">Area of Volunteer</label>
+          <select class="form-control" id="cause">
+            <option>Select A Cause You Care About</option>
+            <option>Educational Institutions and Related Activities</option>
+            <option>Arts, Culture and Humanities</option>
+            <option>Civil Rights, Social Action, Advocacy</option>
+            <option>Human Services - Multipurpose and Other</option>
+            <option>Public Safety, Disaster Preparedness and Relief</option>
+          </select>
+        </div>
+        <button type="button" id="search-btn">Submit</button>
+       <div class="form-group results"></div>
+      </form>
+    <!-- jQuery and bootstrap bundele links to displaye humburgure menu(hide elements of navbar) and others -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+    <script src="script/script.js"></script>
+</body>
+
+</html>
