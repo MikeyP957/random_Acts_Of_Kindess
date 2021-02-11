@@ -10,84 +10,72 @@ var appendList = document.querySelector(".charity")
 // Starts Function on Submit
 
 startButton.addEventListener("click", function(){
-    fetch(charityNavigatorURL)
+  fetch(charityNavigatorURL)
 
-    .then(function(response){
-        return response.json();
-       })
+  .then(function(response){
+    return response.json();
+   })
        
-     .then(function(data){
-        console.log(data);
+  .then(function(data){
+    console.log(data);
 
-        //create variables/ object to store data and append
+    //create variables/ object to store data and append
         
-        var resultsTag = document.querySelector('.results');
-        resultsTag.innerHTML = "";
+    var resultsTag = document.querySelector('.results');
+    resultsTag.innerHTML = "";
+    
+    
+    var charityClassification = data[0].irsClassification.nteeClassification;
+    var selectedCause = document.getElementById("cause").value;
+    console.log(selectedCause);
+    var filteredCharities = [];
+    // This filters out data classification
+    for ( var i = 0; i<data.length; i++) {
+      if (selectedCause === data[i].irsClassification.nteeType){
+         filteredCharities.push(data[i]);
+        //data from api      
+        var charityCity = data[i].mailingAddress.city;
+        var charityName = data[i].charityName;
+        var charityAddress = data[i].mailingAddress.streetAddress1;
+        var charityWebsite = data[i].charityNavigatorURL;
+        //crete elements to append
+        var charityCityTag = document.createElement('p');
+        var cityTag = document.createElement('p');
+        var charityAddressTag = document.createElement('p');
+        var charMailAdd = document.createElement('p');
+        var websiteAnchor = document.createElement('a');
+        console.log(websiteAnchor)
         
-        
-        var charityClassification = data[0].irsClassification.nteeClassification;
-        var selectedCause = document.getElementById("cause").value;
-        console.log(selectedCause);
-        var filteredCharities = [];
+        websiteAnchor.innerHTML = charityWebsite;
+        websiteAnchor.setAttribute('href', charityWebsite);
+        //append elements
+        cityTag.append(charityName);
+        charityAddressTag.append(charityAddress);
+        charityCityTag.append(charityCity)
+        resultsTag.append(cityTag, charityAddressTag, charityCityTag, websiteAnchor);
+      }
+    }
 
-        // This filters out data classification
-        for ( var i = 0; i<data.length; i++) {
+    console.log(filteredCharities);
 
-
-            if (selectedCause === data[i].irsClassification.nteeType){
-                filteredCharities.push(data[i]);
-
-               
-                var charityCity = data[i].mailingAddress.city;
-                var charityCityTag = document.createElement('p');
-                var cityTag = document.createElement('p');
-                var charityName = data[i].charityName;
-                var charityAddressTag = document.createElement('p');
-                var charityAddress = data[i].mailingAddress.streetAddress1;
-                var charMailAdd = document.createElement('p');
-                var charityWebsite = data[i].charityNavigatorURL;
-                var websiteAnchor = document.createElement('a');
-                
-                
-
-                console.log(websiteAnchor)
-
-
-
-                cityTag.append(charityName);
-                charityAddressTag.append(charityAddress);
-                charityCityTag.append(charityCity)
-                websiteAnchor.setAttribute('href', charityWebsite);
-                websiteAnchor.innerHTML = charityWebsite;
-                resultsTag.append(cityTag, charityAddressTag, charityCityTag, websiteAnchor);
-
-
-                
-            }
-        }
-
-        console.log(filteredCharities);
-
-     });
-
-     
+  }); 
 });
 
-//Why will map not display and how do i get generated results to be pins on the map?
+  //Why will map not display and how do i get generated results to be pins on the map?
 
-const googleMapKey = 'AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew';
-// const googleMapID = 'ChIJVTPokywQkFQRmtVEaUZlJRA'
-// 'dld2qnRg3gwdOcrlLEf9eYdsbLtx0KZzyshZF0cwghcerhbZfMTAePFUjzpfsyaI'
-// var googleMapURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=47.6062,-122.3321&radius=500&key=AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew'
+  const googleMapKey = 'AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew';
+  // const googleMapID = 'ChIJVTPokywQkFQRmtVEaUZlJRA'
+  // 'dld2qnRg3gwdOcrlLEf9eYdsbLtx0KZzyshZF0cwghcerhbZfMTAePFUjzpfsyaI'
+  // var googleMapURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=47.6062,-122.3321&radius=500&key=AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew'
 
      let map;
 
-     function initMap() {
-         console.log('test')
-       map = new google.maps.Map(document.getElementById("map"), {
-         center: { lat: 47.6062095, lng: -122.3320708 },
-         zoom: 8,
-       });
-     }
+    function initMap() {
+      console.log('test')
+      map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: 47.6062095, lng: -122.3320708 },
+      zoom: 8,
+      });
+    }
 
 
