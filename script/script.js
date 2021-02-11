@@ -1,16 +1,13 @@
-
-// 
+// Constants for Charity Navigator API Used
 
 const charityNavigatorKey = "3ec0b4533e236b7a527fbf81dd68dd75";
 const charityNavigatorId = "1f1b3eac";
-const googleMapKey = 'AIzaSyCa_GtE78cio4hq8ZlvVZEVYEFQEgdOboQ';
-const googleMapID = 'ChIJVTPokywQkFQRmtVEaUZlJRA'
-const zipCodeKey = 'dld2qnRg3gwdOcrlLEf9eYdsbLtx0KZzyshZF0cwghcerhbZfMTAePFUjzpfsyaI'
-const zipCodeID = ''
 var charityNavigatorURL = "https://api.data.charitynavigator.org/v2/Organizations?app_id=1f1b3eac&app_key=3ec0b4533e236b7a527fbf81dd68dd75&state=WA&city=Seattle&zip="
-var googleMapURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&key=AIzaSyCa_GtE78cio4hq8ZlvVZEVYEFQEgdOboQ'
-var startButton = document.getElementById("submit-btn")
+
+var startButton = document.getElementById("search-btn")
 var appendList = document.querySelector(".charity")
+
+// Starts Function on Submit
 
 startButton.addEventListener("click", function(){
     fetch(charityNavigatorURL)
@@ -42,49 +39,55 @@ startButton.addEventListener("click", function(){
 
                
                 var charityCity = data[i].mailingAddress.city;
+                var charityCityTag = document.createElement('p');
                 var cityTag = document.createElement('p');
                 var charityName = data[i].charityName;
+                var charityAddressTag = document.createElement('p');
                 var charityAddress = data[i].mailingAddress.streetAddress1;
+                var charMailAdd = document.createElement('p');
                 var charityWebsite = data[i].charityNavigatorURL;
                 var websiteAnchor = document.createElement('a');
+                
                 
 
                 console.log(websiteAnchor)
 
 
-                cityTag.append(charityName,charityAddress, charityCity);
+
+                cityTag.append(charityName);
+                charityAddressTag.append(charityAddress);
+                charityCityTag.append(charityCity)
                 websiteAnchor.setAttribute('href', charityWebsite);
                 websiteAnchor.innerHTML = charityWebsite;
-                resultsTag.append(cityTag, websiteAnchor);
+                resultsTag.append(cityTag, charityAddressTag, charityCityTag, websiteAnchor);
 
-                // function initMap() {
 
-                //     var options = {
-                //         zoom:8,
-                //         center:{lat:47.6062,lng: -122.3321}
-                        
-                //     }
-
-                //     var map = new google.maps.Map(document.getElementById('map'), options)
-
-                // }
-            
-            
+                
             }
         }
 
         console.log(filteredCharities);
 
-        
-        // Creates List of Charities based on user search criteria
-        var newListElm = document.createElement("li");
-
-            newListElm.innerHTML = "<p>Charity Name: " + charityName + "</p><br> <p>Charity Address" + charityAddress  + "</p>"
-            
-            // appendList.appendChild(newListElm)
-
-
      });
 
      
-})
+});
+
+//Why will map not display and how do i get generated results to be pins on the map?
+
+const googleMapKey = 'AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew';
+// const googleMapID = 'ChIJVTPokywQkFQRmtVEaUZlJRA'
+// 'dld2qnRg3gwdOcrlLEf9eYdsbLtx0KZzyshZF0cwghcerhbZfMTAePFUjzpfsyaI'
+// var googleMapURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=47.6062,-122.3321&radius=500&key=AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew'
+
+     let map;
+
+     function initMap() {
+         console.log('test')
+       map = new google.maps.Map(document.getElementById("map"), {
+         center: { lat: 47.6062095, lng: -122.3320708 },
+         zoom: 8,
+       });
+     }
+
+
