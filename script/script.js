@@ -33,23 +33,25 @@ startButton.addEventListener("click", function(){
     for ( var i = 0; i<data.length; i++) {
       if (selectedCause === data[i].irsClassification.nteeType){
          filteredCharities.push(data[i]);
-              
+        //data from api      
         var charityCity = data[i].mailingAddress.city;
+        var charityName = data[i].charityName;
+        var charityAddress = data[i].mailingAddress.streetAddress1;
+        var charityWebsite = data[i].charityNavigatorURL;
+        //crete elements to append
         var charityCityTag = document.createElement('p');
         var cityTag = document.createElement('p');
-        var charityName = data[i].charityName;
         var charityAddressTag = document.createElement('p');
-        var charityAddress = data[i].mailingAddress.streetAddress1;
         var charMailAdd = document.createElement('p');
-        var charityWebsite = data[i].charityNavigatorURL;
         var websiteAnchor = document.createElement('a');
         console.log(websiteAnchor)
-
+        
+        websiteAnchor.innerHTML = charityWebsite;
+        websiteAnchor.setAttribute('href', charityWebsite);
+        //append elements
         cityTag.append(charityName);
         charityAddressTag.append(charityAddress);
         charityCityTag.append(charityCity)
-        websiteAnchor.setAttribute('href', charityWebsite);
-        websiteAnchor.innerHTML = charityWebsite;
         resultsTag.append(cityTag, charityAddressTag, charityCityTag, websiteAnchor);
       }
     }
