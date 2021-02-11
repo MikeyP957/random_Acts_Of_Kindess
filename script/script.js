@@ -61,21 +61,21 @@ startButton.addEventListener("click", function(){
   }); 
 });
 
-//Why will map not display and how do i get generated results to be pins on the map?
+  //Why will map not display and how do i get generated results to be pins on the map?
 
-const googleMapKey = 'AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew';
-// const googleMapID = 'ChIJVTPokywQkFQRmtVEaUZlJRA'
-// 'dld2qnRg3gwdOcrlLEf9eYdsbLtx0KZzyshZF0cwghcerhbZfMTAePFUjzpfsyaI'
-// var googleMapURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=47.6062,-122.3321&radius=500&key=AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew'
+  const googleMapKey = 'AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew';
+  // const googleMapID = 'ChIJVTPokywQkFQRmtVEaUZlJRA'
+  // 'dld2qnRg3gwdOcrlLEf9eYdsbLtx0KZzyshZF0cwghcerhbZfMTAePFUjzpfsyaI'
+  // var googleMapURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=47.6062,-122.3321&radius=500&key=AIzaSyBNRfgI2l7u-g8OLKgIL4ueoq_XDs9b-Ew'
 
      let map;
 
-     function initMap() {
-         console.log('test')
-       map = new google.maps.Map(document.getElementById("map"), {
-         center: { lat: 47.6062095, lng: -122.3320708 },
-         zoom: 8,
-       });
-     }
+    function initMap() {
+      console.log('test')
+      map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: 47.6062095, lng: -122.3320708 },
+      zoom: 8,
+      });
+    }
 
 
